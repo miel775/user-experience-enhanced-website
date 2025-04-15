@@ -6,4 +6,32 @@
     <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
 </section>
 
+<section class="publicaties">
+    <div class="mediabalk">
+        <form>
+            <input type="search" id="form-search"/>
+        </form>
+
+        <form>
+            <button>Column</button>
+            <button>Awards</button>
+            <button>DDA nieuws</button>
+        </form>
+    </div>
+    <div>
+        {% for publication in publications %}
+            <article>
+                <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}" alt="publicatie-foto">
+
+                <h2> {{ publication.title }} </h2>
+
+
+            </article>
+        {% endfor %}
+    </div>
+
+    {{ publications | json }}
+
+</section>
+
 {% render './partials/footter.liquid', title: 'DDA Publicaties' %}

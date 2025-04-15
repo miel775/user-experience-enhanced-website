@@ -1,6 +1,9 @@
 import express, { urlencoded } from 'express';
 import { Liquid } from 'liquidjs';
 
+const allPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications');
+const allPublicationsJSON = await allPublications.json();
+
 const app = express();
 app.use(express.static('public'));
 
@@ -8,8 +11,10 @@ const engine = new Liquid();
 app.engine('liquid', engine.express()); 
 
 app.get('/', (req, res) => {
-res.render('index.liquid')
-})
+res.render('index.liquid',{
+    publications: allPublicationsJSON.data
+});
+});
 
 app.get('/over-ons', (req, res) => {
     res.render('index.liquid')
