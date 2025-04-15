@@ -29,8 +29,18 @@ app.get('/publicaties', (req, res) => {
     res.render('publications.liquid')
 })
 
-app.get('/publciaties/:slug', (req, res) => {
-    res.render('publications')
+app.get('/publciaties/:id', (req, res) => {
+    const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}&limit=1`);
+    // eerst wordt de data opgehaald uit de database
+    const publicationID = request.params.id;
+   
+    // vervolgens wordt dit omgezet naar een json file
+    const publicationFetchJSON = await publicationFetch.json();
+
+    // de content wordt geladen op de pagina
+    res.render('publication-blog.liquid'{
+        publicationID: publicationFetchJSON.data?.[0] || []
+    })
 })
 
 app.get('/leden', (req, res) => {
