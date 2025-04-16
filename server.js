@@ -4,6 +4,10 @@ import { Liquid } from 'liquidjs';
 const allPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications');
 const allPublicationsJSON = await allPublications.json();
 
+// Deze json files zijn voor het laten zien van de laatste publicaties
+const datedPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?sort=-date');
+const datedPublicationsJSON = await datedPublications.json();
+
 const app = express();
 app.use(express.static('public'));
 
@@ -12,8 +16,9 @@ app.engine('liquid', engine.express());
 
 app.get('/', (req, res) => {
 res.render('index.liquid',{
-    publications: allPublicationsJSON.data
-});
+    publications: allPublicationsJSON.data,
+    datedpublications: datedPublicationsJSON.data
+    });
 });
 
 app.get('/over-ons', (req, res) => {
@@ -29,8 +34,8 @@ app.get('/publicaties', (req, res) => {
     res.render('publications.liquid')
 })
 
-app.get('/publciaties/:id', (req, res) => {
-    const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}&limit=1`);
+app.get('/publciaties/:id',async function (req, res) {
+    const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}`);
     // eerst wordt de data opgehaald uit de database
     const publicationID = request.params.id;
    
@@ -38,7 +43,7 @@ app.get('/publciaties/:id', (req, res) => {
     const publicationFetchJSON = await publicationFetch.json();
 
     // de content wordt geladen op de pagina
-    res.render('publication-blog.liquid'{
+    res.render('publicatie-blog.liquid', {
         publicationID: publicationFetchJSON.data?.[0] || []
     })
 })

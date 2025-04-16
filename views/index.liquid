@@ -1,5 +1,5 @@
 
-{% render './partials/header.liquid', title: 'DDA Publicaties' %}
+{% include './partials/header.liquid', title: 'DDA Publicaties' %}
 
 <section class="introductie">
     <h1>Publciaties</h1>
@@ -16,12 +16,21 @@
             <button>Column</button>
             <button>Awards</button>
             <button>DDA nieuws</button>
+            <button>Algemeen</button>
+            <button>Digitale Inclusie</button>
+            <button>Branche</button>
+            <button>Belangenhartiging</button>
+
+
+
+
         </form>
     </div>
     <div>
         {% for publication in publications %}
             <article>
-                <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}" alt="publicatie-foto">
+                {% comment %} een height toegevoegd aan de HTML zodat je geen layout shift krijgt {% endcomment %}
+                <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}" alt="publicatie-foto" height="100p">
 
                 <h2> {{ publication.title }} </h2>
                 <p> {{ publivation.intro }} </p>
@@ -36,4 +45,4 @@
 
 </section>
 
-{% render './partials/footer.liquid', title: 'DDA Publicaties' %}
+{% include './partials/footer.liquid', title: 'DDA Publicaties' %}
