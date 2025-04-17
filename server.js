@@ -14,7 +14,7 @@ app.use(express.static('public'));
 const engine = new Liquid();
 app.engine('liquid', engine.express()); 
 
-app.get('/', (req, res) => {
+app.get('/publicatie', (req, res) => {
 res.render('index.liquid',{
     publications: allPublicationsJSON.data,
     datedpublications: datedPublicationsJSON.data
@@ -29,27 +29,34 @@ app.get('/contact', (req, res) => {
     res.render('contact.liquid')
 })
 
-app.get('/publicaties', (req, res) => {
+app.get('/', (req, res) => {
     // maak een per publicatie die uit de database komt
-    res.render('publications.liquid')
+    res.render('home.liquid')
 })
 
-app.get('/publciaties/:id',async function (req, res) {
-    const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}`);
-    // eerst wordt de data opgehaald uit de database
-    const publicationID = request.params.id;
-   
-    // vervolgens wordt dit omgezet naar een json file
-    const publicationFetchJSON = await publicationFetch.json();
-
+app.get('/publicaties/:id',async function (req, res) {
     // de content wordt geladen op de pagina
-    res.render('publicatie-blog.liquid', {
-        publicationID: publicationFetchJSON.data?.[0] || []
-    })
-})
+    if {
+        const publicationID = request.params.id;
+        const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}`);
+        // eerst wordt de data opgehaald uit de database
+    
+        // vervolgens wordt dit omgezet naar een json file
+        const publicationFetchJSON = await publicationFetch.json();
+
+        res.render('publicatie-blog.liquid', {
+        publicationID: publicationFetchJSON.data?.[0] || {}
+    });
+
+    // Error state aangemaakt
+    } catch (error) {
+        console.error('Fout bij laden van publicatie:', error)
+        res.status(404).send('Er ging wat mis met het laden van de content')
+    }
+});
 
 app.get('/leden', (req, res) => {
-    res.render('contact.liquid')
+    res.render('leden.liquid')
 })
 
 app.get('/vacatures', (req, res) => {
