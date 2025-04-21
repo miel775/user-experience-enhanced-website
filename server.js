@@ -12,10 +12,17 @@ const app = express();
 app.use(express.static('public'));
 
 const engine = new Liquid();
-app.engine('liquid', engine.express()); 
+app.engine('liquid', engine.express());
 
-app.get('/publicatie', (req, res) => {
-res.render('index.liquid',{
+
+app.get('/', (req, res) => {
+    // Er is een homepage gemaakt waarbij je kan navigeren naar andere pagina's
+    res.render('index.liquid')
+})
+
+
+app.get('/publicaties', (req, res) => {
+res.render('publicaties.liquid',{
     publications: allPublicationsJSON.data,
     datedpublications: datedPublicationsJSON.data
     });
@@ -29,29 +36,25 @@ app.get('/contact', (req, res) => {
     res.render('contact.liquid')
 })
 
-app.get('/', (req, res) => {
-    // maak een per publicatie die uit de database komt
-    res.render('home.liquid')
-})
 
-app.get('/publicaties/:id',async function (req, res) {
-    // de content wordt geladen op de pagina
-    if {
-        const publicationID = request.params.id;
-        const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}`);
-        // eerst wordt de data opgehaald uit de database
-    
-        // vervolgens wordt dit omgezet naar een json file
-        const publicationFetchJSON = await publicationFetch.json();
+app.get('/publicaties/:id', async function (req, res) {
+    try {
+        const publicationID = req.params.id;
+
+        const response = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}`);
+        const data = await response.json();
+
+        // Controleer of de data beschikbaar is
+        if (!data.data || data.data.length === 0) {
+            return res.status(404).send('Publicatie niet gevonden');
+        }
 
         res.render('publicatie-blog.liquid', {
-        publicationID: publicationFetchJSON.data?.[0] || {}
-    });
-
-    // Error state aangemaakt
+            publication: data.data[0]
+        });
     } catch (error) {
-        console.error('Fout bij laden van publicatie:', error)
-        res.status(404).send('Er ging wat mis met het laden van de content')
+        console.error(error);
+        res.status(500).send('Er is iets misgegaan bij het ophalen van de publicatie');
     }
 });
 

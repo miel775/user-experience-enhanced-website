@@ -9,12 +9,13 @@
     <header id="mobile-header">
         <img src="/assets/dda-logo-white.svg" height="200p" alt="DDA logo">
         {% comment %} Het is het beste dit te gebruiken volgens de sprint review {% endcomment %}
-         <div class="dropdown-menu">
-            <select name="publcaties" id="publicaties">Publciaties
-                <option value="over-ons">Over ons</option>
-                <option value="events">Events</option>
-                <option value="leden" href="/leden">Leden</option>
-                <option value="vacatures" href="/vacatures">Vacatures</option>
+        <div id="dropdown-menu">
+            <select>
+                <option> <a href="/publicaties"> Publicaties </a> </option>
+                <option> <a href="/over-ons"> Over Ons</a></option>
+                <option> <a href="/events"> Events </a></option>
+                <option> <a href="/leden">Leden </a></option>
+                <option> <a href="/vacatures">Vacatures </a></option>
             </select>
         </div>
     </header>
@@ -24,16 +25,18 @@
             <img src="/assets/dda-logo-white.svg" height="200p" alt="DDA logo">
         </div>
 
+ 
+
         <div id="navigation-bar">
             <a href="/over-ons">Over Ons</a>
             <a href="/events">Events</a>
-            <a class="active">Publicaties</a>
+            <a href="/publicaties">Publicaties</a>
             <a href="/leden">Leden</a>
             <a href="/vacatures">Vacatures</a>
         </div>
 
         <div id="sign-up">
-            <a>Sign up</a>
-            <a></a>
+            <a>Inloggen</a>
+            <a>Word Lid</a>
         </div>
     </header>
