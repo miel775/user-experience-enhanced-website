@@ -29,32 +29,31 @@ res.render('publicaties.liquid',{
 });
 
 app.get('/over-ons', (req, res) => {
-    res.render('index.liquid')
+    res.render('over-ons.liquid')
     })
 
-app.get('/contact', (req, res) => {
-    res.render('contact.liquid')
+app.get('/vacatures', (req, res) => {
+    res.render('vacatures.liquid')
 })
 
 
-app.get('/publicaties/:id', async function (req, res) {
+app.get('/publicatie/:id', async function (request, response) {
     try {
-        const publicationID = req.params.id;
+        const publicationID = request.params.id;
 
-        const response = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}`);
-        const data = await response.json();
+        const fetchResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}`);
+        const data = await fetchResponse.json();
 
-        // Controleer of de data beschikbaar is
         if (!data.data || data.data.length === 0) {
-            return res.status(404).send('Publicatie niet gevonden');
+            return response.status(404).send('Publicatie niet gevonden');
         }
 
-        res.render('publicatie-blog.liquid', {
+        response.render('publicatie-blog.liquid', {
             publication: data.data[0]
         });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Er is iets misgegaan bij het ophalen van de publicatie');
+        response.status(500).send('Er is iets misgegaan bij het ophalen van de publicatie');
     }
 });
 
@@ -62,8 +61,8 @@ app.get('/leden', (req, res) => {
     res.render('leden.liquid')
 })
 
-app.get('/vacatures', (req, res) => {
-    res.render('contact.liquid')
+app.get('/events', (req, res) => {
+    res.render('events.liquid')
 })
 
 app.set('port',process.env.PORT || 8000)

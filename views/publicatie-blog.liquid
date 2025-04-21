@@ -1,5 +1,15 @@
-{% render './partials/header.liquid', title: 'DDA Publicaties' %}
-    
+{% include './partials/header.liquid', title: 'DDA Publicaties' %}
+
+{{ publication | json }}
+
+<section id="titel-pagina">
+    <h1> {{ publication.title }} </h1>
+    <p>  {{ publication.intro }} </p>
+</section>
+
+<section id="content-publicatie">
+    {{ publication.content }}
+</section>
 
 
-{% render './partials/footer.liquid', title: 'DDA Publicaties' %}
+{% include './partials/footer.liquid', title: 'DDA Publicaties' %}
