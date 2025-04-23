@@ -12,14 +12,14 @@
      {% comment %} Fonts and Icons {% endcomment %}
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
  
      <script src="./script/darkmode.js" defer></script>
 </head>
 
 <body>
     <header id="mobile-header">
-        <img src="/assets/d_logo.svg" height="200p" alt="DDA logo">
+        <img src="/assets/d_logo.svg" height="100p" width="100p" alt="DDA logo">
         {% comment %} Het is het beste dit te gebruiken volgens de sprint review {% endcomment %}
         <div id="dropdown-menu">
             <select>
@@ -33,9 +33,9 @@
         </div>
     </header>
 
-    <header id="desktop-mobile">
+    <header id="desktop-header">
         <div id="logo-placement">
-            <img src="/assets/dda-logo-white.svg" height="200p" alt="DDA logo">
+            <img src="/assets/d_logo.svg" height="100p" width="100p" alt="DDA logo">
         </div>
 
  
@@ -49,11 +49,11 @@
         </div>
 
         <div id="sign-up">
-            <a>Inloggen</a>
-            <a>Word Lid</a>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <i class="fa-solid fa-star"></i>
         </div>
-
+        
         <div class="darkmode">
-            <button id="darkmode-button">Darkmode</button>
+            <button id="darkmode-button"> <i class="fa-solid fa-moon"></i> </button>
         </div>
     </header>

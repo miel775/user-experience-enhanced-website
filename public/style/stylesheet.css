@@ -1,5 +1,6 @@
 :root{
     color-scheme: light dark;
+    color-scheme: colorblue 
 
     /* fonts desktop */
     --desktop-h1: 92px;
@@ -57,9 +58,12 @@
     --color-blue-2: #929ce8;
     --color-yellow: #f7e19f;
     --color-blue-2: #ae8a20;
+
+    /* color-scheme */
     
     /* border */
-    --border: 1px #222226 solid;
+    --border: 2px #222226 solid;
+    --border-small: 1px #222226 solid;
     --border-blue: 1px #364bf7 solid;
     
     
@@ -185,6 +189,23 @@
     body {
         color: light-dark(var(--color-black), var(--color-white));
         background-color: light-dark(var(--color-white), var(--color-black));
+        margin: var(--spacing-32);
+        border: var(--border);
+
+        @media (max-width: 720px){
+            top: 0;
+            border: var(--border-small);
+        }
+    }
+
+    section {
+        border-top: var(--border);
+        border-bottom: var(--border);
+
+        @media (max-width: 720px){
+            border-top: var(--border-small);
+            border-bottom: var(--border-small);
+        }
     }
     
     

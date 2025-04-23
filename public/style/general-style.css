@@ -5,3 +5,37 @@ body {
 body.darkmode {
     color-scheme: dark;
 }
+
+header {
+    position: sticky;
+    background-color: var(--color-blue);
+    padding: var(--spacing-16);
+}
+
+#mobile-header{
+    display: none;
+    @media (max-width: 720px) {
+        display: block;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        top: 80%;
+        right: 100%;
+
+    }
+
+    @media (max-width: 500px) {
+        width: 78%;
+    }
+}
+ 
+#desktop-header{
+    display: block;    
+    @media (max-width: 720px) {
+        display: none;
+    }
+}
+
+#introductie {
+    margin-top: 256px;
+}
