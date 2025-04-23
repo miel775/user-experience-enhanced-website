@@ -30,7 +30,16 @@
         {% for publication in publications %}
             <article>
                 {% comment %} een height toegevoegd aan de HTML zodat je geen layout shift krijgt {% endcomment %}
-                <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}" alt="publicatie-foto" height="100p">
+                <picture>
+                    {% if publication.photo == 'none' %}
+                    <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=avif">
+                    <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=webp">
+                    
+                    <img src="https://fdnd-agency.directus.app/assets/{{ publication.photo }}" alt="publicatie-foto" height="100p">
+                    {% else %}
+                    <img src="https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU=" alt="publicatie-foto" height="100p">
+                    {% endif %}
+                </picture>
 
                 <h2> {{ publication.title }} </h2>
                 <p> {{ publication.intro }} </p>
