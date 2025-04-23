@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DDA</title>
+
+    {% comment %} CSS {% endcomment %}
+     <link href="./style/stylesheet.css" rel="stylesheet">
+     <link href="./style/general-style.css" rel="stylesheet">
+
+     {% comment %} Fonts and Icons {% endcomment %}
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
+ 
+     <script src="./script/darkmode.js" defer></script>
 </head>
+
 <body>
     <header id="mobile-header">
-        <img src="/assets/dda-logo-white.svg" height="200p" alt="DDA logo">
+        <img src="/assets/d_logo.svg" height="200p" alt="DDA logo">
         {% comment %} Het is het beste dit te gebruiken volgens de sprint review {% endcomment %}
         <div id="dropdown-menu">
             <select>
@@ -39,5 +51,9 @@
         <div id="sign-up">
             <a>Inloggen</a>
             <a>Word Lid</a>
+        </div>
+
+        <div class="darkmode">
+            <button id="darkmode-button">Darkmode</button>
         </div>
     </header>

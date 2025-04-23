@@ -1,0 +1,7 @@
+body {
+    color-scheme: light;
+}
+
+body.darkmode {
+    color-scheme: dark;
+}

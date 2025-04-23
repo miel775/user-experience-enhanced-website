@@ -1,4 +1,5 @@
 :root{
+    color-scheme: light dark;
 
     /* fonts desktop */
     --desktop-h1: 92px;
@@ -179,6 +180,11 @@
     
     .bold {
         font-weight: 1000;
+    }
+
+    body {
+        color: light-dark(var(--color-black), var(--color-white));
+        background-color: light-dark(var(--color-white), var(--color-black));
     }
     
     
