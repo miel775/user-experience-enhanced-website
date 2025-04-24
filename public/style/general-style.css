@@ -30,12 +30,23 @@ header {
 }
  
 #desktop-header{
-    display: block;    
+    display: block;
+    display: flex;    
+    align-items: center;
     @media (max-width: 720px) {
         display: none;
     }
-}
 
-#introductie {
-    margin-top: 256px;
+    #navigation-bar {
+    justify-content: center;
+    
+    
+    a {
+        background-color: var(--color-white);
+        padding: var(--spacing-16);
+        border: var(--border-blue);
+    }
+
+
+}
 }

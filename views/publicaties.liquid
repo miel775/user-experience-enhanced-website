@@ -1,32 +1,41 @@
 
 {% include './partials/header.liquid', title: 'DDA Publicaties' %}
 
+
 <section id="introductie">
     <h1>Publciaties</h1>
     <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
 </section>
 
-<section class="publicaties">
-    <div class="mediabalk">
+<section id="publicatie">
+    <div id="mediabalk">
         <form>
             <input type="search" id="form-search"/>
         </form>
 
-        <form>
-            <button>Column</button>
-            <button>Awards</button>
-            <button>DDA nieuws</button>
-            <button>Algemeen</button>
-            <button>Digitale Inclusie</button>
-            <button>Branche</button>
-            <button>Belangenhartiging</button>
-        </form>
+        <div id="buttonstopic">
+            <button class="button-filter" type="button" data-topic="Column">Column</button>
+            <button class="button-filter" type="button" data-topic="Awards">Awards</button>
+            <button class="button-filter" type="button" data-topic="DDA nieuws">DDA nieuws</button>
+            <button class="button-filter" type="button" data-topic="Algemeen">Algemeen</button>
+            <button class="button-filter" type="button" data-topic="Digitale Inclusie">Digitale Inclusie</button>
+            <button class="button-filter" type="button" data-topic="Branche">Branche</button>
+            <button class="button-filter" type="button" data-topic="Belangenhartiging">Belangenhartiging</button>
+        </div>
+
+        {% comment %} ideal state {% endcomment %}
+         {% comment %} empty state {% endcomment %}
     </div>
+    {% if contentLoaded %}
+    <div id="publicatie-filter">
+        {% comment %} alle gefilterde topics komen hier {% endcomment %}
+    </div>
+    {% else %}
     <div>
         {% for publication in publications %}
-            <article>
+            <article id="publication">
                 {% comment %} een height toegevoegd aan de HTML zodat je geen layout shift krijgt {% endcomment %}
-                <picture>
+                <picture id="publication-photo">
                     {% if publication.photo == 'none' %}
                     <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=avif">
                     <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=webp">
@@ -39,16 +48,16 @@
                     {% endif %}
                 </picture>
 
-                <h2> {{ publication.title }} </h2>
-                <p> {{ publication.intro }} </p>
+                <p id="publication-topic"> {{ publication.topic }} </p>
 
-                <a href="/publicatie/{{ publication.id }}">Visit</a>
+                <h2 id="publication-title"> {{ publication.title }} </h2>
+                <p id="publication-intro"> {{ publication.intro }} </p>
 
-
+                <a href="/publicatie/{{ publication.id }}" id="publication-visit">Visit</a>
             </article>
         {% endfor %}
     </div>
-
+    {% endif %}
 
 </section>
 

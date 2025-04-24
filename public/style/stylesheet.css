@@ -1,6 +1,5 @@
 :root{
     color-scheme: light dark;
-    color-scheme: colorblue 
 
     /* fonts desktop */
     --desktop-h1: 92px;
@@ -45,6 +44,8 @@
     --spacing-96: 96px;
     --spacing-104: 104px;
     --spacing-128: 128px;
+    --spacing-256: 256px;
+    --spacing-512: 512px;
     
     /* fonts */
     --font-family-regular: Archivo, sans-serif;
@@ -57,7 +58,7 @@
     --color-blue: #364bf7;
     --color-blue-2: #929ce8;
     --color-yellow: #f7e19f;
-    --color-blue-2: #ae8a20;
+    --color-yellow-2: #ae8a20;
 
     /* color-scheme */
     
@@ -199,8 +200,6 @@
     }
 
     section {
-        border-top: var(--border);
-        border-bottom: var(--border);
 
         @media (max-width: 720px){
             border-top: var(--border-small);
