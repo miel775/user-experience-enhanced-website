@@ -44,17 +44,40 @@ app.get('/publicatie/:id', async function (request, response) {
         const fetchResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationID}"}`);
         const data = await fetchResponse.json();
 
+        const messagesFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_messages?filter={"_and":[{"from":{"_contains":"Miel_"}},{"for":{"_contains":"${publicationID}"}}]}`)
+        const messagesJSON = await messagesFetch.json();
+
         if (!data.data || data.data.length === 0) {
             return response.status(404).send('Publicatie niet gevonden');
         }
 
         response.render('publicatie-blog.liquid', {
-            publication: data.data[0]
+            publication: data.data[0],
+            messages: messagesJSON.data
         });
     } catch (error) {
         console.error(error);
         response.status(500).send('Er is iets misgegaan bij het ophalen van de publicatie');
     }
+});
+
+app.post ('/publication/:id', async function (request, response) {
+    const publicationID = request.params.id;
+  
+    await fetch('https://fdnd-agency.directus.app/items/dda_messages', {
+      method: 'POST',
+      body: JSON.stringify({
+        from: `Miel_${request.body.from}`,
+        text: request.body.text,
+        emoji: request.body.emoji,
+        for: publicationID 
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  
+    response.redirect(303, `/publication/${publicationID}`);
 });
 
 app.get('/leden', (req, res) => {

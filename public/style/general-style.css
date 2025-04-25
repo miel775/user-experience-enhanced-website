@@ -1,5 +1,10 @@
+* {
+    text-decoration: none;
+}
+
 body {
     color-scheme: light;
+    text-decoration: none;
 }
 
 body.darkmode {
@@ -29,10 +34,11 @@ header {
     }
 }
  
-#desktop-header{
+#desktop-header{x
     display: block;
     display: flex;    
     align-items: center;
+    justify-content: space-between;
     @media (max-width: 720px) {
         display: none;
     }
@@ -45,8 +51,17 @@ header {
         background-color: var(--color-white);
         padding: var(--spacing-16);
         border: var(--border-blue);
+        font-family: monospace;
+        text-decoration: none;
+        text-transform: uppercase;
     }
 
-
 }
+}
+
+#sign-up {
+    padding: var(--spacing-16);
+    border: var(--border-blue);
+    background-color: var(--color-white);
+    gap: 1em;
 }

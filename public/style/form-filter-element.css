@@ -25,7 +25,6 @@
     "photo intro intro intro"
     "photo . . visit";
     gap: var(--spacing-32);
-    border: var(--border);
 
     #publication-photo {
         grid-area: photo;
@@ -41,6 +40,9 @@
 
     #publication-visit {
         grid-area: visit;
+        background-color: var(--color-blue);
+        padding: var(--spacing-16);
+        color: var(--color-white);
     }
 
     #publication-topic {
