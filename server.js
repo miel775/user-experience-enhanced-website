@@ -61,7 +61,7 @@ app.get('/publicatie/:id', async function (request, response) {
     }
 });
 
-app.post ('/publication/:id', async function (request, response) {
+app.post ('/publicatie/:id', async function (request, response) {
     const publicationID = request.params.id;
   
     await fetch('https://fdnd-agency.directus.app/items/dda_messages', {
@@ -77,7 +77,7 @@ app.post ('/publication/:id', async function (request, response) {
       }
     })
   
-    response.redirect(303, `/publication/${publicationID}`);
+    response.redirect(303, `/publicatie/${publicationID}`);
 });
 
 app.get('/leden', (req, res) => {
