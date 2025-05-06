@@ -1,7 +1,5 @@
 {% include './partials/header.liquid', title: 'DDA Publicaties' %}
 
-{{ publication | json }}
-
 <section id="titel-pagina">
     <h1> {{ publication.title }} </h1>
     <p>  {{ publication.intro }} </p>
@@ -11,7 +9,8 @@
     {{ publication.content }}
 </section>
 
-<section id="comment-section">
+
+<section class="comment-section">
     {% assign messageszero = messages %}
     {% if messageszero.size < 1 %}
         <div class="empty-state" id="empty">
@@ -38,11 +37,11 @@
 </section>
 
 <section class="type">
-    <form class="form-element" action="/publication/{{ publicationz.id }}" method="POST">
+    <form class="form-element" action="/publicatie/{{ publication.id }}" method="POST">
         <div class="form-elements">
             <textarea name="text" rows="12" cols="140" required class="text-area" placeholder="Reageer hier jouw mening..."></textarea>
 
-            <input type="text" name="from" id="name" placeholder="Naam" required class="forms hide name-comment" class="forms"/>
+            <input type="text" name="from" id="name" placeholder="Naam" required class="forms hide name-comment"/>
 
             <select name="emoji" id="emojis" required class="forms hide">
                 <option value="smile">😊</option>

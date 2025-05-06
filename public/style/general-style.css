@@ -64,4 +64,70 @@ header {
     border: var(--border-blue);
     background-color: var(--color-white);
     gap: 1em;
+
+    a {
+        background-color: var(--color-blue);
+        color: var(--color-white);
+        width: var(--spacing-32);
+        height: var(--spacing-32);
+        padding: var(--spacing-16);
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+/* Footer */
+footer {
+    display: grid;
+    grid-template-columns: 25% 60% 15%;
+    grid-template-rows: 30% 70%;
+
+    a {
+        background-color: var(--color-blue);
+        color: var(--color-white);
+        width: var(--spacing-32);
+        height: var(--spacing-32);
+        padding: var(--spacing-16);
+        display: flex;
+        align-items: center;
+    }
+}
+
+#contact a {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    width: var(--spacing-32);
+    height: var(--spacing-32);
+    padding: var(--spacing-16);
+    display: flex;
+    align-items: center;
+}
+
+#social-media-links {
+    grid-row-start: 1;
+    grid-column-start: 1;
+}
+
+#logo-dda-footer {
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+#navigatie-footer {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#contact {
+    grid-row-start: 2;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+#copyright {
+    border-top: var(--border);
+    text-align: center;
 }

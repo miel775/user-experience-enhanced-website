@@ -14,6 +14,10 @@ app.use(express.static('public'));
 const engine = new Liquid();
 app.engine('liquid', engine.express());
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 
 app.get('/', (req, res) => {
     // Er is een homepage gemaakt waarbij je kan navigeren naar andere pagina's
@@ -62,7 +66,9 @@ app.get('/publicatie/:id', async function (request, response) {
 });
 
 app.post ('/publicatie/:id', async function (request, response) {
-    const publicationID = request.params.id;
+    const publicationMessageID = request.params.id;
+
+    console.log('Request body:', request.body); 
   
     await fetch('https://fdnd-agency.directus.app/items/dda_messages', {
       method: 'POST',
@@ -70,14 +76,14 @@ app.post ('/publicatie/:id', async function (request, response) {
         from: `Miel_${request.body.from}`,
         text: request.body.text,
         emoji: request.body.emoji,
-        for: publicationID 
+        for: publicationMessageID
       }),
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    });
   
-    response.redirect(303, `/publicatie/${publicationID}`);
+    response.redirect(303, `/publicatie/${publicationMessageID}`);
 });
 
 app.get('/leden', (req, res) => {
