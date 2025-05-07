@@ -1,5 +1,7 @@
 {% include './partials/header.liquid', title: 'DDA Publicaties' %}
 
+<a href="/publicaties">Ga terug</a>
+
 
 <section id="titel-pagina">
     <h1> {{ publication.title }} </h1>
@@ -37,8 +39,14 @@
     {% endif %}
 </section>
 
+{% if send %}
+    <section class="send">
+        <h3>Your message has been send</h3>
+        {% comment %} success state {% endcomment %}
+    </section>
+{% else %}
 <section class="type">
-    <form class="form-element" action="/publicatie/{{ publication.id }}" method="POST">
+    <form class="form-element" action="/publicatie/{{ publication.id }}" method="POST" data-enhanced="comment-form">
         <div class="form-elements">
             <textarea name="text" rows="12" cols="140" required class="text-area" placeholder="Reageer hier jouw mening..."></textarea>
 
@@ -55,6 +63,76 @@
         </div>
     </form>
 </section>
+{% endif %}
+
+<section class="loading-state" id="loading-state">
+    <h2>Comment wordt geplaatst</h2>
+    <div class="progressbar">
+        <progress id="file" max="100" value="0" data-value="100">000</progress>
+    </div>
+</section>
+<section class="error-state" id="error-state">
+    <h2>Comment wordt geplaatst</h2>
+    <div class="errorstate">
+        <i class="fa-solid fa-xmark"></i> <h2>De comment kon niet geplaatst worden</h2>
+    </div>
+</section>
+
+<script type="module">
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form[data-enhanced="comment-form"]');
+    const loadingState = document.getElementById('loading-state');
+    const errorState = document.getElementById('error-state');
+
+    if (form) {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Show loading state
+            loadingState.style.display = 'block';
+            errorState.style.display = 'none';
+
+            const formData = new FormData(form);
+            const submitButton = event.submitter;
+
+            if (submitButton) {
+                formData.append(submitButton.name, submitButton.value);
+            }
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new URLSearchParams(formData),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    throw new Error('Niet doorgestuurd zoals verwacht');
+                }
+            } catch (err) {
+                loadingState.style.display = 'none';
+                errorState.style.display = 'block';
+                console.error(err);
+            }
+        });
+    }
+});
+
+let progress = document.querySelector('#file');
+let value = 0;
+let interval = setInterval(() => {
+    if (value >= 100) {
+        clearInterval(interval);
+    } else {
+        value += 5;
+        progress.value = value;
+    }
+}, 100);
+</script>
 
 
 {% include './partials/footer.liquid', title: 'DDA Publicaties' %}

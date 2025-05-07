@@ -78,8 +78,7 @@ header {
 
 /* laatste nieuws */
 #laatste-publicaties {
-    border-left: var(--border);
-    border-right: var(--border);
+    border-top: var(--border);
     padding: -1em;
     display: grid;
     
@@ -140,7 +139,6 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: -1em;
-    overflow: auto;
 
     @media (max-width:720px) {
         display: none;
