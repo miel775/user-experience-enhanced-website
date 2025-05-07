@@ -61,7 +61,7 @@ header {
 
 #sign-up {
     padding: var(--spacing-16);
-    border: var(--border-blue);
+    border-top: var(--border-blue);
     background-color: var(--color-white);
     gap: 1em;
 
@@ -76,12 +76,83 @@ header {
     }
 }
 
-
-/* Footer */
-footer {
+/* laatste nieuws */
+#laatste-publicaties {
+    border-left: var(--border);
+    border-right: var(--border);
+    padding: -1em;
     display: grid;
-    grid-template-columns: 25% 60% 15%;
-    grid-template-rows: 30% 70%;
+    
+    h2 {
+        display: flex;
+        justify-content: center;
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+
+    article:nth-of-type(-n+3) {
+        padding: 1em;
+
+
+        @media (max-width:720px) {
+            display: flex;
+        }
+
+        p {
+            visibility: visible;
+
+            @media (max-width:1080px) {
+                visibility:hidden;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 8em;
+            object-fit: cover;
+            border: var(--border);
+
+        }
+
+        h4 {
+            margin-top: var(--spacing-12);
+            
+            @media (max-width:1080px) {
+                margin-top: -2em;
+            }
+
+        }
+
+        a {
+            border: var(--border);
+            padding: var(--spacing-12);
+            font-family: var(--font-family-mono);
+            width: auto;
+        }
+    }
+
+    article:nth-last-of-type(-n+4) {
+        display: none;
+    }
+}
+
+#laatste-nieuws-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: -1em;
+    overflow: auto;
+
+    @media (max-width:720px) {
+        display: none;
+    }
+}
+
+
+#wordt-partner {
+    border-top: var(--border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
     a {
         background-color: var(--color-blue);
@@ -91,6 +162,47 @@ footer {
         padding: var(--spacing-16);
         display: flex;
         align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+}
+
+/* parade */
+.foto-parade {
+    height: 8em;
+    border-top: var(--border);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    animation-play-state: running; 
+}
+
+.picture-container-1 {
+    display: flex;
+    animation: parade 20s linear infinite;
+}
+
+.containerA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8em;
+    width: 8em;
+    border: var(--border);
+}
+
+
+/* Footer */
+#footer-desktop {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 30% 70%;
+    border-top: var(--border);
+    height: 28em;
+
+
+    @media (max-width: 720px) {
+        display: none;
     }
 }
 
@@ -107,27 +219,163 @@ footer {
 #social-media-links {
     grid-row-start: 1;
     grid-column-start: 1;
+    display: flex;
+    gap: var(--spacing-32);
+    margin: var(--spacing-16);
+
+    a {
+        background-color: var(--color-blue);
+        color: var(--color-white);
+        width: var(--spacing-32);
+        height: var(--spacing-32);
+        padding: var(--spacing-16);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 #logo-dda-footer {
+    margin-top: var(--spacing-16);
     grid-row-start: 1;
     grid-column-start: 2;
     grid-column-end: 3;
+    display: flex;
+    justify-content: center;
 }
 
 #navigatie-footer {
     grid-row-start: 2;
     grid-column-start: 1;
     grid-column-end: 2;
+
+    a {
+    display: flex;
+    text-decoration: underline;
+    color: var(--color-black);
+    font-family: var(--font-family-mono);
+    margin-left: var(--spacing-16);
+    text-wrap: 1em;
+    line-height: 2em;
+    }
 }
 
 #contact {
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    display: flex;
+    gap: var(--spacing-32);
+    margin: var(--spacing-16);
+
+    a {
+        background-color: var(--color-blue);
+        color: var(--color-white);
+        width: var(--spacing-32);
+        height: var(--spacing-32);
+        padding: var(--spacing-16);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+#adres-footer {
     grid-row-start: 2;
     grid-column-start: 3;
     grid-column-end: 4;
+    line-height: 1em;
+    margin: var(--spacing-16);
+
+    p:nth-of-type(1) {
+        font-weight: bold;
+    }
 }
 
 #copyright {
     border-top: var(--border);
     text-align: center;
 }
+
+#divfooter2 {
+    border-top: var(--border);
+    display: grid;
+    grid-template-columns: (1fr 1fr);
+    grid-template-rows: (1fr 1fr);
+}
+
+#footer-mobile {
+    #social-media-links-2 {
+        grid-row-start: 1;
+        grid-column-start: 1;
+        display: flex;
+        gap: var(--spacing-32);
+        margin: var(--spacing-16);
+        justify-content: center;
+    
+        a {
+            background-color: var(--color-blue);
+            color: var(--color-white);
+            width: var(--spacing-32);
+            height: var(--spacing-32);
+            padding: var(--spacing-16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    #logo-dda-footer {
+        margin-bottom: var(--spacing-16);
+    }
+
+    @media (min-width: 720px) {
+        display: none;
+    }
+
+    #contact-2 {
+        grid-column-start: 2;
+        display: flex;
+        gap: var(--spacing-32);
+        margin: var(--spacing-16);
+    
+        a {
+            background-color: var(--color-blue);
+            color: var(--color-white);
+            width: var(--spacing-32);
+            height: var(--spacing-32);
+            padding: var(--spacing-16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    #adres-footer-2 {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        line-height: 1em;
+        margin: var(--spacing-16);
+    
+        p:nth-of-type(1) {
+            font-weight: bold;
+        }
+    }
+
+    #navigatie-footer-2 {
+        grid-row-start: 1;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    
+        a {
+        display: flex;
+        text-decoration: underline;
+        color: var(--color-black);
+        font-family: var(--font-family-mono);
+        margin: var(--spacing-16);
+        text-wrap: 1em;
+        line-height: 2em;
+        }
+    }
+}
+

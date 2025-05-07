@@ -1,16 +1,36 @@
 <section id="laatste-publicaties">
+    <h2>Laatste Nieuws</h2>
 
+    <div id="laatste-nieuws-container">
+        
+        {% for publication in datedpublications %}
+            <article href="/publicatie/{{ publication.id }}">
+                <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}" alt="publicatie-foto" width="100p">
+                <p> {{ publication.topic }} </p>
+            <p> {{ publication.date }} </p>
+
+            <h3> {{ publication.title }} </h3>
+
+            <a href="/publicatie/{{ publication.id }}"> Bekijk </a>
+            </article>
+        {% endfor %}
+        
+    </div>
+
+    {% comment %} <div class="container-mobile">
+         
     {% for publication in datedpublications %}
         <article href="/publication/{{ publication.id }}">
-            <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}" alt="publicatie-foto" width="100p" height="100p">
+            <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}" alt="publicatie-foto" width="100p">
         </article>
     {% endfor %}
-
+    
+</div> {% endcomment %}
 </section>
 
 <section id="wordt-partner">
 
-    <h2>Wordt nu partner</h2>
+    <h2>Word nu partner</h2>
 
 
     <a class="fa-solid fa-arrow-right"></a>
@@ -18,13 +38,85 @@
 </section>
 
 <section id="leden">
-    <img src="./assets/leden/logo-amac.png" alt="amac photo" height="100p" width="100p">
-    <img src="./assets/leden/logo-dearly.png" alt="dearly photo" height="100p" width="100p">
-    <img src="./assets/leden/logo-ictrecht.png" alt="ictrecht photo" height="100p" width="100p">
-    <img src="./assets/leden/logo-match-plan.png" alt="ictrecht photo" height="100p" width="100p">
+    <div class="foto-parade">
+        <div class="picture-container-1">
+            <div class="containerA">
+                <img src="./assets/leden/logo-dearly.png" width="50p" alt="dearly">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-match-plan.png" width="50p" alt="match-plan">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-amac.png" width="50p" class="amac">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-ictrecht.png" width="50p" class="ICTrecht">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-dearly.png" width="50p" alt="dearly">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-match-plan.png" width="50p" alt="match-plan">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-amac.png" width="50p" class="amac">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-ictrecht.png" width="50p" class="ICTrecht">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-dearly.png" width="50p" alt="dearly">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-match-plan.png" width="50p" alt="match-plan">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-amac.png" width="50p" class="amac">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-ictrecht.png" width="50p" class="ICTrecht">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-dearly.png" width="50p" alt="dearly">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-match-plan.png" width="50p" alt="match-plan">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-amac.png" width="50p" class="amac">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-ictrecht.png" width="50p" class="ICTrecht">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-dearly.png" width="50p" alt="dearly">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-match-plan.png" width="50p" alt="match-plan">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-amac.png" width="50p" class="amac">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-ictrecht.png" width="50p" class="ICTrecht">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-dearly.png" width="50p" alt="dearly">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-match-plan.png" width="50p" alt="match-plan">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-amac.png" width="50p" class="amac">
+            </div>
+            <div class="containerA">
+                <img src="./assets/leden/logo-ictrecht.png" width="50p" class="ICTrecht">
+            </div>
+        </div>
+    </div>
 </section>
 
-<footer>
+<footer id="footer-desktop">
     {% comment %} social media links {% endcomment %}
     <div id="social-media-links">
         <a class="fa-brands fa-instagram" href="https://www.instagram.com/dutchdigitalagencies/"></a>
@@ -51,9 +143,46 @@
     </div>
 
     <div id="adres-footer">
-        <p> Dutch Digital Agencies
-            Overhoeksplein 1
-            1031 KS Amsterdam</p>
+        <p> Dutch Digital Agencies</p>
+        <p> Overhoeksplein 1 </p>
+        <p> 1031 KS Amsterdam</p>
+    </div>
+
+</footer>
+
+<footer id="footer-mobile">
+    <div id=divfooter1>
+        <div id="social-media-links-2">
+            <a class="fa-brands fa-instagram" href="https://www.instagram.com/dutchdigitalagencies/"></a>
+            <a class="fa-brands fa-facebook-f" href="https://www.facebook.com/dutchdigitalagencies"></a>
+            <a class="fa-brands fa-linkedin" href="https://www.linkedin.com/company/dutch-digital-agencies/"></a>
+        </div>
+
+        <div id="logo-dda-footer">
+            <img src="/assets/dda-logo-white.svg" height="100p" alt="DDA logo">
+        </div>
+    </div>
+
+    <div id="divfooter2">
+        <div id="navigatie-footer-2">
+            <a href="/over-ons">Over Ons</a>
+            <a href="/events">Events</a>
+            <a href="/publicaties">Publicaties</a>
+            <a href="/leden">Leden</a>
+            <a href="/vacatures">Vacatures</a>
+            <a href="https://www.datocms-assets.com/144536/1740403116-privacy-policy-dutch-digital-agencies.pdf">Privacy Beleid</a>
+        </div>
+
+        <div id="contact-2">
+            <a href="tel:+31854010391" class="fa-solid fa-phone"></a>
+            <a href="mailto:info@dutchdigitalagencies.com" class="fa-solid fa-envelope"></a>
+        </div>
+
+        <div id="adres-footer-2">
+            <p> Dutch Digital Agencies</p>
+            <p> Overhoeksplein 1 </p>
+            <p> 1031 KS Amsterdam</p>
+        </div>
     </div>
 
 </footer>

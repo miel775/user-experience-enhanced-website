@@ -39,7 +39,6 @@
     }
 
     #publication-visit {
-        grid-area: visit;
         background-color: var(--color-blue);
         padding: var(--spacing-16);
         color: var(--color-white);
@@ -51,3 +50,4 @@
         padding: var(--spacing-8);
     }
 }
+
