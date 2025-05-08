@@ -263,7 +263,69 @@ section {
 
 
 .error-state {
-    display: flex;
+    display: none;
     border-top: var(--border);
     height: var(--spacing-48);
+}
+
+#end {
+    visibility: none;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+    overflow: visible;
+  }
+
+#start {
+    animation: flipping 2s infinite;
+    transform-origin: center;
+    position: relative;
+    right: 100px
+}
+
+#hourglass {
+    position: relative;
+  top: -70px;
+  left: 5px;
+}
+
+#text-loading {
+    scale: 2;
+    animation: loadingg 2s infinite;
+}
+
+.loading-animation {
+    position: relative;
+    top: 25px;
+}
+
+@keyframes flipping {
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loadingg{
+    0%{
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
