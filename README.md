@@ -43,16 +43,39 @@ Wel is de footer een klein beetje aangepast op de nieuwe stijl.
 Hier is niet veel veranderd er is namelijk gefocust op de stijl van de website.
 
 # Loading state
-<img width="797" alt="Screenshot 2025-05-07 at 21 08 48" src="https://github.com/user-attachments/assets/537106fe-8185-4701-9550-a269876c974c" />
+<img width="664" alt="Screenshot 2025-05-10 at 07 44 40" src="https://github.com/user-attachments/assets/b745cf26-362e-4c29-ae56-c3f80046046e" />
 
-
-Wanneer er een comment geplaatst wordt onder een publicatie dan is er een loading state. Het is nog niet helemaal gelukt om de pagina op dezelfde positie te laten. Dit wordt later opgelost.
+Wanneer er een comment geplaatst wordt onder een publicatie dan is er een loading state. Deze sectie laat hij zien wanneer de form wordt gesubmit naar de server dan gaat het over naar de loading state. Als het is niet gelukt dan laat de website een error state zien.
 
 ## Gebruik
-Je kan scrollen door de publicaties en erop klikken en uiteindelijk reageren op een publicatie door je mening te geven.
+Je kan scrollen door de publicaties en erop klikken en uiteindelijk reageren op een publicatie door je mening te geven. Je kan het formulier invullen met een klein textje, je naam en een emoji. Deze reactie wordt dan geplaatst op de publicatie die er staat.
+
+De header van de mobiel zit aan de onderkant, heb niet veel tijd gehad om hier op te focussen als alleen de dropdown menu. Maar je kan deze gebruiken door op de dropdown button te klikken en te navigeren door alle pagina's.
 
 ## Kenmerken
 De HTML is opgebouwd in shopify liquid. Er wordt data opgehaald uit een server (Directus) Hier kan je publicatie materiaal toevogen om zo je website makkelijk publicaties te weergeven.
+
+## Voorbeelden
+
+# Voorbeeld 1: Loading state
+
+https://github.com/miel775/user-experience-enhanced-website/blob/86118591ad83cbf1d6d5fe830a97ac36bef9d395/views/publicatie-blog.liquid#L94-L138
+
+Hier zie je hoe ik de loading state heb toegepast in het ontwerp.
+
+# Voorbeeld 2: Responsive Photo
+
+https://github.com/miel775/user-experience-enhanced-website/blob/213ba430f64a777a565b57e948d737a48c81a835/views/publicaties.liquid#L37-L54
+
+In plaats dat ik img tag gebruik, stop ik het in een picture element, hier kan je fallbacks in maken zodat de foto responsive wordt en het voorkomt dat er layout shifts zijn. Dit ook om een width en height mee te geven aan de foto bij de image tag.
+
+# Voorbeeld 3: View Transition
+
+https://github.com/miel775/user-experience-enhanced-website/blob/86118591ad83cbf1d6d5fe830a97ac36bef9d395/views/publicaties.liquid#L55-L57
+
+https://github.com/miel775/user-experience-enhanced-website/blob/86118591ad83cbf1d6d5fe830a97ac36bef9d395/views/publicatie-blog.liquid#L140-L158
+            
+Ik heb een view transition toegepast wanneer je op een publicatie klikt. Ik heb van publicatie pagina naar detailpagina een view transition gemaakt. Dit heb ik wel met inline CSS moeten doen je dynamische data aanspreekt met publication.id.
 
 ## Installatie
 1. Installeer NodeJS
@@ -66,6 +89,7 @@ De HTML is opgebouwd in shopify liquid. Er wordt data opgehaald uit een server (
 ## Bronnen
 Duim
 [Design van DDA](https://www.figma.com/design/9V8Ld6aVJQSggdpDTFr7V6/Untitled?node-id=1-5&t=U3kLuhbu6FF0znTH-1)
+[View Transition](https://daverupert.com/2023/05/getting-started-view-transitions/)
 
 ## Licentie
 
