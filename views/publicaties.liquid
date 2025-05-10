@@ -53,7 +53,7 @@
                     >
                 </picture>
                 {% else %}
-                <img src="https://static.vecteezy.com/system/resources/previews/003/611/119/non_2x/do-not-record-images-no-photography-sign-free-vector.jpg" width="400px" alt="geen foto">
+                <img src="https://static.vecteezy.com/system/resources/previews/003/611/119/non_2x/do-not-record-images-no-photography-sign-free-vector.jpg" width="{{ publication.photo.width }}" height="{{ publication.photo.height }}" alt="geen foto">
                 {% endif %}
 
                 <p id="publication-topic"> {{ publication.topic }} </p>
