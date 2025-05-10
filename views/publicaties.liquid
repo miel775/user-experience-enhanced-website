@@ -33,19 +33,28 @@
     <div>
         {% for publication in publications %}
             <article id="publication">
-                {% comment %} een height toegevoegd aan de HTML zodat je geen layout shift krijgt {% endcomment %}
-                <picture id="publication-photo">
-                    {% if publication.photo == 'none' %}
-                    <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=avif">
-                    <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=webp">
-                    
-                    <img src="https://fdnd-agency.directus.app/assets/{{ publication.photo }}" alt="publicatie-foto" height="100p">
-                    {% else %}
-                    <source type="image/avif" srcset="https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU=">
-                    <source type="image/webp" srcset="https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU=">
-                    <img src="https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU=" alt="publicatie-foto" height="100p">
-                    {% endif %}
+                {% if publication.photo != 'none' %}   
+                <picture style="view-transition-name: post-img-{{ publication.id }}">
+                    <source
+                        type="image/avif" 
+                        srcset="
+                            https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=avif&width=200 200w,
+                            https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=avif&width=300 300w,
+                            https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=avif&width=400 400w,
+                            https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=avif&width=500 500w"
+                        sizes="(max-width: 500px) 100vw, 500px"
+                    />
+                    <img 
+                        src="https://fdnd-agency.directus.app/assets/{{ publication.photo }}?format=png&width=400"
+                        alt=""
+                        width="400"
+                        height="300"
+                        class="publication-photo"
+                    >
                 </picture>
+                {% else %}
+                <img src="https://static.vecteezy.com/system/resources/previews/003/611/119/non_2x/do-not-record-images-no-photography-sign-free-vector.jpg" width="400px" alt="geen foto">
+                {% endif %}
 
                 <p id="publication-topic"> {{ publication.topic }} </p>
 
