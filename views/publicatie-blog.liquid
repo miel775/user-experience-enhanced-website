@@ -1,12 +1,10 @@
 {% include './partials/header.liquid', title: 'DDA Publicaties' %}
 
 
-
-
 <a href="/publicaties">Ga terug</a>
 
 
-<section id="titel-pagina">
+<section id="titel-pagina" style="view-transition-name: post-{{ publication.id }}">
     <h1> {{ publication.title }} </h1>
     <p>  {{ publication.intro }} </p>
 </section>
@@ -105,9 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show loading state
             loadingState.style.display = 'block';
             errorState.style.display = 'none';
+            // laat de loading state zien tijdens het event
 
             const formData = new FormData(form);
             const submitButton = event.submitter;
+            // variables voor het submitten van de data
 
             if (submitButton) {
                 formData.append(submitButton.name, submitButton.value);
@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     throw new Error('Niet doorgestuurd zoals verwacht');
                 }
+                // als het hier wordt geredirect dan verschijnt er een error
             } catch (err) {
                 loadingState.style.display = 'none';
                 errorState.style.display = 'block';
@@ -135,5 +136,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+<style>
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+::view-transition-old(post-{{ publication.id }}) {
+  animation: fade-out 0.5s linear forwards;
+}
+
+::view-transition-new(post-{{ publication.id }}) {
+  animation: fade-in 0.5s linear forwards;
+}
+</style>
 
 {% include './partials/footer.liquid', title: 'DDA Publicaties' %}

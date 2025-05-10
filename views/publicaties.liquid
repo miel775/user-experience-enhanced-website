@@ -52,12 +52,15 @@
                 <h2 id="publication-title"> {{ publication.title }} </h2>
                 <p id="publication-intro"> {{ publication.intro }} </p>
 
-                <a href="/publicatie/{{ publication.id }}" id="publication-visit">Visit</a>
+                <a style="view-transition-name: post-{{ publication.id }}" href="/publicatie/{{ publication.id }}">
+                Visit
+                </a>
             </article>
         {% endfor %}
     </div>
     {% endif %}
 
 </section>
+
 
 {% include './partials/footer.liquid', title: 'DDA Publicaties' %}
