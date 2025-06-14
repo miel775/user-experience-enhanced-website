@@ -27,10 +27,10 @@
                 <h4>{{ message.from | replace: "Miel_", "" }}</h4>
             </div>
             <div class="emoji">
-                {% if message.emoji == 'smile' %}😊{% endif %}
-                {% if message.emoji == 'surprise' %}😲{% endif %}
-                {% if message.emoji == 'tired' %}😩{% endif %}
-                {% if message.emoji == 'cry' %}😢{% endif %}
+                {% if message.emoji == '1' %}😊{% endif %}
+                {% if message.emoji == '2' %}😲{% endif %}
+                {% if message.emoji == '3' %}😩{% endif %}
+                {% if message.emoji == '4' %}😢{% endif %}
             </div>
             <div class="comment">
                 <p>{{ message.text }}</p>
@@ -47,7 +47,7 @@
     </section>
 {% else %}
 <section class="type">
-    <form class="form-element" action="/publicatie/{{ publication.id }}" method="POST" data-enhanced="comment-form">
+    <form class="form-element" action="/publicaties/{{ publication.id }}" method="POST" data-enhanced="comment-form">
         <div class="form-elements">
             <textarea name="text" rows="12" cols="140" required class="text-area" placeholder="Reageer hier jouw mening..."></textarea>
 
